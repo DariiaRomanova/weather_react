@@ -1,0 +1,10 @@
+.Footer {
+  text-align: center;
+  border-top: 1px solid rgba(237, 240, 246, 0.4);
+  padding: 30px 0 0 0;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}
+.Footer a {
+  color: #7877be;
+}

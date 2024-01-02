@@ -1,0 +1,57 @@
+.CurrentWeatherContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 6px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  background-color: rgba(237, 240, 246, 0.4);
+  padding: 15px 20px;
+  margin-top: 30px;
+}
+.DatePlace .city-name {
+  margin: 0;
+  font-size: 36px;
+  line-height: 42px;
+}
+.DatePlace .country-name {
+  margin: 0;
+  font-size: 25px;
+  line-height: 40px;
+}
+.DatePlace .date-time {
+  font-size: 16px;
+  margin: 0;
+  line-height: 20px;
+  color: rgba(39, 33, 66, 0.5);
+}
+
+.current-temperature-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+}
+
+.current-weather-icon img {
+  width: 100px;
+  margin-right: -10px;
+}
+.description-container {
+  text-align: center;
+}
+.current-temp-value {
+  font-size: 88px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.current-temp-unit {
+  margin-top: 20px;
+  font-size: 28px;
+}
+
+.current-weather-description {
+  text-align: center;
+  margin: 0 5px;
+  color: rgba(39, 33, 66, 0.5);
+  font-size: 14px;
+  line-height: 20px;
+}

@@ -1,0 +1,27 @@
+.AdditionalParametersContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.add-param-card {
+  text-align: center;
+  background-color: rgba(237, 240, 246, 0.4);
+  width: 180px;
+  border-radius: 8px;
+  padding: 10px 5px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.add-param-card img {
+  width: 25px;
+  opacity: 0.8;
+  margin-bottom: 5px;
+}
+.add-param-card h6 {
+  margin: 0;
+  font-size: 14px;
+}
+.add-param-card p {
+  font-size: 14px;
+  margin: 10px 0 0 0;
+}
