@@ -22,7 +22,7 @@ export default function Footer() {
       </a>
       <span> and hosted on </span>
       <a
-        href="https://weather-prophet.netlify.app/"
+        href="https://master--glowing-sfogliatella-56549f.netlify.app/"
         target="_blank"
         rel="noreferrer"
       >
