@@ -13,7 +13,7 @@ export default function CurrentWeatherContainer(props) {
       <div className="CurrentWeather">
         <div className="current-temperature-container">
           <div className="current-weather-icon">
-            <img src={props.iconUrl} />
+            <img src={props.iconUrl} alt="CurrentWeatherIcon" />
           </div>
           <div className="current-temp-value temp-value">
             {props.temperature}
