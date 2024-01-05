@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./Search.css";
+import "./Weather.css";
 import CurrentWeatherContainer from "./CurrentWeatherContainer";
 import AdditionalParametersContainer from "./AdditionalParametersContainer";
 
-export default function Search() {
+export default function Weather() {
   const [city, setCity] = useState("");
-  const [weatherResponse, setWeatherResponse] = useState(false);
-  const [weather, setWeather] = useState(null);
+  const [weather, setWeather] = useState({ weatherResponse: false });
 
   function updateCity(event) {
     setCity(event.target.value.trim());
-    dropResult();
   }
 
   function handleSubmit(event) {
@@ -22,8 +20,9 @@ export default function Search() {
   }
 
   function saveResult(response) {
-    setWeatherResponse(true);
     setWeather({
+      weatherResponse: true,
+      city: response.data.name,
       temperature: Math.round(response.data.main.temp),
       description: response.data.weather[0].description,
       country: response.data.sys.country,
@@ -32,12 +31,13 @@ export default function Search() {
       pressure: response.data.main.pressure,
       feelsLike: Math.round(response.data.main.feels_like),
       iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      lat: response.data.coord.lat,
+      lon: response.data.coord.lon,
     });
   }
 
   function dropResult() {
-    setWeatherResponse(false);
-    setWeather(null);
+    setWeather({ weatherResponse: false });
   }
 
   let form = (
@@ -46,6 +46,7 @@ export default function Search() {
         type="search"
         placeholder="Enter a city.."
         required
+        autoFocus="on"
         className="search-form-input"
         onChange={updateCity}
       />
@@ -53,12 +54,12 @@ export default function Search() {
     </form>
   );
 
-  if (weatherResponse) {
+  if (weather.weatherResponse) {
     return (
       <div>
         {form}
         <CurrentWeatherContainer
-          city={city}
+          city={weather.city}
           country={weather.country}
           temperature={weather.temperature}
           feelsLike={weather.feelsLike}
