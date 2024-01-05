@@ -1,4 +1,5 @@
 import React from "react";
+import FormattedDate from "./FormattedDate.js";
 
 import "./CurrentWeatherContainer.css";
 
@@ -8,7 +9,9 @@ export default function CurrentWeatherContainer(props) {
       <div className="DatePlace">
         <h1 className="city-name">{props.city}</h1>
         <h2 className="country-name">{props.country}</h2>
-        <p className="date-time">December, 15. Friday, 14:46</p>
+        <p className="date-time">
+          <FormattedDate date={props.date} />
+        </p>
       </div>
       <div className="CurrentWeather">
         <div className="current-temperature-container">

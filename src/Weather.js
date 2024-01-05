@@ -23,6 +23,7 @@ export default function Weather() {
     setWeather({
       weatherResponse: true,
       city: response.data.name,
+      date: new Date(response.data.dt * 1000),
       temperature: Math.round(response.data.main.temp),
       description: response.data.weather[0].description,
       country: response.data.sys.country,
@@ -34,10 +35,6 @@ export default function Weather() {
       lat: response.data.coord.lat,
       lon: response.data.coord.lon,
     });
-  }
-
-  function dropResult() {
-    setWeather({ weatherResponse: false });
   }
 
   let form = (
@@ -64,6 +61,7 @@ export default function Weather() {
           temperature={weather.temperature}
           feelsLike={weather.feelsLike}
           iconUrl={weather.iconUrl}
+          date={weather.date}
         />
         <AdditionalParametersContainer
           humidity={weather.humidity}
@@ -82,6 +80,7 @@ export default function Weather() {
           temperature={5}
           feelsLike={4}
           iconUrl="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
+          date={new Date(1703718124 * 1000)}
         />
         <AdditionalParametersContainer humidity={62} wind={5} pressure={1020} />
       </div>
