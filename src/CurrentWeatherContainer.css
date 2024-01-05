@@ -24,7 +24,6 @@
   line-height: 20px;
   color: rgba(39, 33, 66, 0.5);
 }
-
 .current-temperature-container {
   display: flex;
   justify-content: space-between;
@@ -35,9 +34,6 @@
   width: 100px;
   margin-right: -10px;
 }
-.description-container {
-  text-align: center;
-}
 .current-temp-value {
   font-size: 88px;
   font-weight: bold;
@@ -45,13 +41,15 @@
 }
 .current-temp-unit {
   margin-top: 20px;
-  font-size: 28px;
+  font-size: 20px;
 }
 
 .current-weather-description {
+  display: block;
+  margin: 0 auto;
   text-align: center;
-  margin: 0 5px;
   color: rgba(39, 33, 66, 0.5);
   font-size: 14px;
   line-height: 20px;
+  text-transform: capitalize;
 }

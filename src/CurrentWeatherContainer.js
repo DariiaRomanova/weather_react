@@ -1,5 +1,6 @@
 import React from "react";
 import FormattedDate from "./FormattedDate.js";
+import CurrentTemperature from "./CurrentTemperature.js";
 
 import "./CurrentWeatherContainer.css";
 
@@ -7,30 +8,21 @@ export default function CurrentWeatherContainer(props) {
   return (
     <div className="CurrentWeatherContainer">
       <div className="DatePlace">
-        <h1 className="city-name">{props.city}</h1>
-        <h2 className="country-name">{props.country}</h2>
+        <h1 className="city-name">{props.data.city}</h1>
+        <h2 className="country-name">{props.data.country}</h2>
         <p className="date-time">
-          <FormattedDate date={props.date} />
+          <FormattedDate date={props.data.date} />
         </p>
       </div>
-      <div className="CurrentWeather">
+      <div>
         <div className="current-temperature-container">
           <div className="current-weather-icon">
-            <img src={props.iconUrl} alt="CurrentWeatherIcon" />
+            <img src={props.data.iconUrl} alt={props.data.description} />
           </div>
-          <div className="current-temp-value temp-value">
-            {props.temperature}
-          </div>
-          <div className="current-temp-unit">°C</div>
+          <CurrentTemperature celsius={props.data.temperature} />
         </div>
-        <div className="description-container">
-          <span className="current-weather-description">
-            {props.descriprion}
-          </span>
-          <span className="current-weather-description">•</span>
-          <span className="current-weather-description">
-            Feels like {props.feelsLike}°C
-          </span>
+        <div className="current-weather-description">
+          {props.data.description}
         </div>
       </div>
     </div>

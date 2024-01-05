@@ -4,19 +4,23 @@ import "./Weather.css";
 import CurrentWeatherContainer from "./CurrentWeatherContainer";
 import AdditionalParametersContainer from "./AdditionalParametersContainer";
 
-export default function Weather() {
-  const [city, setCity] = useState("");
+export default function Weather(props) {
+  const [city, setCity] = useState(props.defaultCity);
   const [weather, setWeather] = useState({ weatherResponse: false });
 
   function updateCity(event) {
     setCity(event.target.value.trim());
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    let apiKey = "13c82af55deb0a442283d013d282bd32";
+  function search() {
+    const apiKey = "13c82af55deb0a442283d013d282bd32";
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
     axios.get(url).then(saveResult);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
   }
 
   function saveResult(response) {
@@ -55,35 +59,12 @@ export default function Weather() {
     return (
       <div>
         {form}
-        <CurrentWeatherContainer
-          city={weather.city}
-          country={weather.country}
-          temperature={weather.temperature}
-          feelsLike={weather.feelsLike}
-          iconUrl={weather.iconUrl}
-          date={weather.date}
-        />
-        <AdditionalParametersContainer
-          humidity={weather.humidity}
-          wind={weather.wind}
-          pressure={weather.pressure}
-        />
+        <CurrentWeatherContainer data={weather} />
+        <AdditionalParametersContainer data={weather} />
       </div>
     );
   } else {
-    return (
-      <div>
-        {form}
-        <CurrentWeatherContainer
-          city="Kyiv"
-          country="UA"
-          temperature={5}
-          feelsLike={4}
-          iconUrl="https://ssl.gstatic.com/onebox/weather/64/sunny.png"
-          date={new Date(1703718124 * 1000)}
-        />
-        <AdditionalParametersContainer humidity={62} wind={5} pressure={1020} />
-      </div>
-    );
+    search();
+    return <div>"Loading"</div>;
   }
 }

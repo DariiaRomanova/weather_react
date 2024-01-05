@@ -11,7 +11,7 @@ export default function AdditionalParametersContainer(props) {
           alt="HumidityIcon"
         />
         <h6>Humidity</h6>
-        <p>{props.humidity}</p>
+        <p>{props.data.humidity}</p>
       </div>
       <div className="add-param-card">
         <img
@@ -19,7 +19,7 @@ export default function AdditionalParametersContainer(props) {
           alt="WindIcon"
         />
         <h6>Wind</h6>
-        <p>{props.wind} m/s</p>
+        <p>{props.data.wind} m/s</p>
       </div>
       <div className="add-param-card">
         <img
@@ -27,7 +27,7 @@ export default function AdditionalParametersContainer(props) {
           alt="PressureIcon"
         />
         <h6>Pressure</h6>
-        <p>{props.pressure}</p>
+        <p>{props.data.pressure}</p>
       </div>
     </div>
   );

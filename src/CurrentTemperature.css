@@ -1,0 +1,18 @@
+.CurrentTemperature {
+  display: flex;
+  justify-content: space-between;
+}
+.current-temp-value {
+  font-size: 88px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.current-temp-unit {
+  margin-top: 20px;
+  font-size: 28px;
+}
+
+a {
+  text-decoration: none;
+  color: #7877be;
+}
