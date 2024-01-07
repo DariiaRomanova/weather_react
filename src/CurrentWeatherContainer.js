@@ -18,11 +18,11 @@ export default function CurrentWeatherContainer(props) {
         <div className="current-temperature-container">
           <div className="current-weather-icon">
             <img src={props.data.iconUrl} alt={props.data.description} />
+            <p className="current-weather-description">
+              {props.data.description}
+            </p>
           </div>
           <CurrentTemperature celsius={props.data.temperature} />
-        </div>
-        <div className="current-weather-description">
-          {props.data.description}
         </div>
       </div>
     </div>

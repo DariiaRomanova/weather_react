@@ -1,0 +1,26 @@
+.WeatherForecast {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  background-color: rgba(237, 240, 246, 0.5);
+  padding: 15px 20px;
+  margin-bottom: 30px;
+}
+
+.WeatherForecast-day {
+  color: rgba(39, 33, 66, 0.6);
+  margin: 0 auto;
+}
+
+.WeatherForecast-icon {
+  display: block;
+  margin: 0 auto;
+  width: 64px;
+}
+
+.WeatherForecast-max {
+  font-weight: 600;
+  margin-right: 5px;
+}

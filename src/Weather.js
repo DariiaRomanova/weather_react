@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Weather.css";
 import CurrentWeatherContainer from "./CurrentWeatherContainer";
 import AdditionalParametersContainer from "./AdditionalParametersContainer";
+import WeatherForecast from "./WeatherForecast";
 
 export default function Weather(props) {
   const [city, setCity] = useState(props.defaultCity);
@@ -13,8 +14,8 @@ export default function Weather(props) {
   }
 
   function search() {
-    const apiKey = "13c82af55deb0a442283d013d282bd32";
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+    const apiKey = "od6b13a01c4ef9abd54c31t431434300";
+    let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
     axios.get(url).then(saveResult);
   }
 
@@ -24,43 +25,41 @@ export default function Weather(props) {
   }
 
   function saveResult(response) {
+    console.log(response);
     setWeather({
       weatherResponse: true,
-      city: response.data.name,
-      date: new Date(response.data.dt * 1000),
-      temperature: Math.round(response.data.main.temp),
-      description: response.data.weather[0].description,
-      country: response.data.sys.country,
-      humidity: response.data.main.humidity,
+      city: response.data.city,
+      date: new Date(response.data.time * 1000),
+      temperature: Math.round(response.data.temperature.current),
+      description: response.data.condition.description,
+      country: response.data.country,
+      humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
-      pressure: response.data.main.pressure,
-      feelsLike: Math.round(response.data.main.feels_like),
-      iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
-      lat: response.data.coord.lat,
-      lon: response.data.coord.lon,
+      pressure: response.data.temperature.pressure,
+      /*feelsLike: Math.round(response.data.main.feels_like),
+      iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,*/
+      iconUrl: response.data.condition.icon_url,
+      coordinates: response.data.coordinates,
     });
   }
-
-  let form = (
-    <form className="Search" onSubmit={handleSubmit}>
-      <input
-        type="search"
-        placeholder="Enter a city.."
-        required
-        autoFocus="on"
-        className="search-form-input"
-        onChange={updateCity}
-      />
-      <input type="submit" value="Search" className="search-form-button" />
-    </form>
-  );
 
   if (weather.weatherResponse) {
     return (
       <div>
-        {form}
+        <form className="Search" onSubmit={handleSubmit}>
+          <input
+            type="search"
+            placeholder="Enter a city.."
+            required
+            autoFocus="on"
+            className="search-form-input"
+            onChange={updateCity}
+          />
+          <input type="submit" value="Search" className="search-form-button" />
+        </form>
         <CurrentWeatherContainer data={weather} />
         <AdditionalParametersContainer data={weather} />
+        <WeatherForecast coordinates={weather.coordinates} />
       </div>
     );
   } else {
