@@ -25,7 +25,6 @@ export default function Weather(props) {
   }
 
   function saveResult(response) {
-    console.log(response);
     setWeather({
       weatherResponse: true,
       city: response.data.city,
