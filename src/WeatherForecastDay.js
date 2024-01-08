@@ -1,13 +1,16 @@
-export default function WeatherForecastDay(props) {
-  function maxTemperature() {
-    let temperature = Math.round(props.data.temperature.maximum);
-    return `${temperature}°`;
-  }
+import React, { useState } from "react";
+import ForecastTemperature from "./ForecastTemperature";
 
-  function minTemperature() {
-    let temperature = Math.round(props.data.temperature.minimum);
-    return `${temperature}°`;
-  }
+export default function WeatherForecastDay(props) {
+  const [minTemperature, setMinTemperature] = useState(
+    props.data.temperature.minimum
+  );
+  const [maxTemperature, setMaxTemperature] = useState(
+    props.data.temperature.maximum
+  );
+
+  const [temperatureUnit, setTemperatureUnit] = useState("celsius");
+
   function day() {
     let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let date = new Date(props.data.time * 1000);
@@ -23,10 +26,11 @@ export default function WeatherForecastDay(props) {
         alt="Weather Icon"
         className="WeatherForecast-icon"
       />
-      <div className="WeatherForecast-temp-container">
-        <span className="WeatherForecast-max">{maxTemperature()}</span>
-        <span className="WeatherForecast-min">{minTemperature()}</span>
-      </div>
+      <ForecastTemperature
+        maxTemperature={Math.round(maxTemperature)}
+        minTemperature={Math.round(minTemperature)}
+        temperatureUnit={temperatureUnit}
+      />
     </div>
   );
 }

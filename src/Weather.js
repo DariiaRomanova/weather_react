@@ -35,8 +35,7 @@ export default function Weather(props) {
       humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
       pressure: response.data.temperature.pressure,
-      /*feelsLike: Math.round(response.data.main.feels_like),
-      iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,*/
+      /*feelsLike: Math.round(response.data.main.feels_like),*/
       iconUrl: response.data.condition.icon_url,
       coordinates: response.data.coordinates,
     });
@@ -45,7 +44,7 @@ export default function Weather(props) {
   if (weather.weatherResponse) {
     return (
       <div>
-        <form className="Search" onSubmit={handleSubmit}>
+        <form className="Search" onSubmit={handleSubmit} name="searchCity">
           <input
             type="search"
             placeholder="Enter a city.."
