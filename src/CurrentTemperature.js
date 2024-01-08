@@ -13,8 +13,8 @@ function CurrentTemperature({
   const handleClick = (unit) => {
     changeTemperatureUnit(unit);
     const oppositeUnit = unit === "celsius" ? "fahrenheit" : "celsius";
-    changeButtonColor(unit, "#7877BE"); // Clicked button becomes purple
-    changeButtonColor(oppositeUnit, "#000000"); // Opposite button becomes black
+    changeButtonColor(unit, "#7877BE");
+    changeButtonColor(oppositeUnit, "#000000");
   };
 
   function fahrenheit() {
