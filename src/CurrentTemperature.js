@@ -1,22 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import { changeTemperatureUnit } from "./actions";
+import { changeTemperatureUnit, changeButtonColor } from "./actions";
 import "./CurrentTemperature.css";
 
 function CurrentTemperature({
   temperature,
   temperatureUnit,
   changeTemperatureUnit,
+  buttonColors,
+  changeButtonColor,
 }) {
-  /*let [unit, setUnit] = useState("celsius");
-  function celsiusToFahrenheit(event) {
-    event.preventDefault();
-    setUnit("fahrenheit");
-  }
-  function fahrenheitToCelsius(event) {
-    event.preventDefault();
-    setUnit("celsius");
-  }*/
+  const handleClick = (unit) => {
+    changeTemperatureUnit(unit);
+    const oppositeUnit = unit === "celsius" ? "fahrenheit" : "celsius";
+    changeButtonColor(unit, "#7877BE"); // Clicked button becomes purple
+    changeButtonColor(oppositeUnit, "#000000"); // Opposite button becomes black
+  };
 
   function fahrenheit() {
     let fahrenheit = Math.round((temperature * 9) / 5 + 32);
@@ -29,8 +28,19 @@ function CurrentTemperature({
         {temperatureUnit === "celsius" ? temperature : fahrenheit()}
       </div>
       <div className="current-temp-unit">
-        <button onClick={() => changeTemperatureUnit("celsius")}>°C</button> |{" "}
-        <button onClick={() => changeTemperatureUnit("fahrenheit")}>F</button>
+        <button
+          style={{ color: buttonColors.celsius }}
+          onClick={() => handleClick("celsius")}
+        >
+          °C
+        </button>{" "}
+        |{" "}
+        <button
+          style={{ color: buttonColors.fahrenheit }}
+          onClick={() => handleClick("fahrenheit")}
+        >
+          F
+        </button>
       </div>
     </div>
   );
@@ -38,10 +48,12 @@ function CurrentTemperature({
 
 const mapStateToProps = (state) => ({
   temperatureUnit: state.temperatureUnit,
+  buttonColors: state.buttonColors,
 });
 
 const mapDispatchToProps = {
   changeTemperatureUnit,
+  changeButtonColor,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CurrentTemperature);

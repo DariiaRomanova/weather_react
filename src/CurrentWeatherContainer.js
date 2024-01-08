@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FormattedDate from "./FormattedDate.js";
 import CurrentTemperature from "./CurrentTemperature.js";
 
@@ -11,6 +11,10 @@ export default function CurrentWeatherContainer(props) {
   const changeTemperatureUnit = (unit) => {
     setTemperatureUnit(unit);
   };
+
+  useEffect(() => {
+    setTemperature(props.data.temperature);
+  }, [props.data.temperature]);
   return (
     <div className="CurrentWeatherContainer">
       <div className="DatePlace">
