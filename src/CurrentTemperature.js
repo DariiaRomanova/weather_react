@@ -11,10 +11,12 @@ function CurrentTemperature({
   changeButtonColor,
 }) {
   const handleClick = (unit) => {
-    changeTemperatureUnit(unit);
-    const oppositeUnit = unit === "celsius" ? "fahrenheit" : "celsius";
-    changeButtonColor(unit, "#7877BE");
-    changeButtonColor(oppositeUnit, "#000000");
+    if (unit !== temperatureUnit) {
+      changeTemperatureUnit(unit);
+      const oppositeUnit = unit === "celsius" ? "fahrenheit" : "celsius";
+      changeButtonColor(unit, "#000000");
+      changeButtonColor(oppositeUnit, "#7877BE");
+    }
   };
 
   function fahrenheit() {
